@@ -10,7 +10,8 @@
             }
           }
         ]
-      ]
+      ],
+      "plugins": ["wildcard"]
     },
     "buildCommonJS": {
       "presets": ["@babel/preset-env"],
@@ -20,7 +21,8 @@
           {
             "corejs": 3
           }
-        ]
+        ],
+        ["wildcard"]
       ]
     },
     "buildESmodules": {
@@ -40,7 +42,8 @@
           {
             "corejs": 3
           }
-        ]
+        ],
+        ["wildcard"]
       ]
     }
   }
