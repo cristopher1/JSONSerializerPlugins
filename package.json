@@ -21,6 +21,9 @@
   },
   "homepage": "https://github.com/cristopher1/JSONSerializerPlugins#readme",
   "devDependencies": {
+    "@babel/cli": "^7.22.15",
+    "@babel/core": "^7.22.17",
+    "@babel/preset-env": "^7.22.15",
     "eslint": "^8.49.0",
     "eslint-config-standard": "^17.1.0",
     "eslint-plugin-import": "^2.28.1",
@@ -29,6 +32,7 @@
     "eslint-prettier-config": "^1.0.1",
     "husky": "^8.0.3",
     "lint-staged": "^14.0.1",
-    "prettier": "^3.0.3"
+    "prettier": "^3.0.3",
+    "rollup": "^3.29.1"
   }
 }
