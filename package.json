@@ -1,0 +1,26 @@
+{
+  "name": "jsonserializerplugins",
+  "version": "1.0.0",
+  "description": "Plugins for JSONSerializer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cristopher1/JSONSerializerPlugins.git"
+  },
+  "keywords": [
+    "plugins",
+    "JSONSerializer"
+  ],
+  "author": "Cristopher Luis Jiménez Meza",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cristopher1/JSONSerializerPlugins/issues"
+  },
+  "homepage": "https://github.com/cristopher1/JSONSerializerPlugins#readme",
+  "devDependencies": {
+    "eslint": "^8.49.0"
+  }
+}
