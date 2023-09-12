@@ -13,6 +13,9 @@
       ],
       "plugins": ["wildcard"]
     },
+    "resolveImportAll": {
+      "plugins": ["wildcard"]
+    },
     "buildCommonJS": {
       "presets": ["@babel/preset-env"],
       "plugins": [
@@ -21,8 +24,7 @@
           {
             "corejs": 3
           }
-        ],
-        ["wildcard"]
+        ]
       ]
     },
     "buildESmodules": {
@@ -42,8 +44,7 @@
           {
             "corejs": 3
           }
-        ],
-        ["wildcard"]
+        ]
       ]
     }
   }
