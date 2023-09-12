@@ -1,7 +1,7 @@
 import path from 'path'
 import { defineConfig } from 'rollup'
 import { nodeResolve } from '@rollup/plugin-node-resolve'
-import { getBabelOutputPlugin } from '@rollup/plugin-babel'
+import { babel, getBabelOutputPlugin } from '@rollup/plugin-babel'
 
 const getOutputFile = (path, name, infoExtension) => {
   return `${path}/${name}.${infoExtension.extension}`
@@ -20,6 +20,9 @@ const MJS = {
 }
 
 const INPUT_FILE = 'src/index.js'
+
+// Resolve import * as plugin from './plugins'
+const RESOLVE_IMPORT_ALL = 'resolveImportAll'
 
 // Unminified transpiler files
 const OUTPUT_DIR = 'dist'
@@ -56,5 +59,8 @@ export default defineConfig({
     },
   ],
   external: [/node_module/],
-  plugins: [nodeResolve()],
+  plugins: [
+    babel({ envName: RESOLVE_IMPORT_ALL, babelHelpers: 'bundled' }),
+    nodeResolve(),
+  ],
 })
