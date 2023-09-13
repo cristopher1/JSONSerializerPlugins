@@ -32,7 +32,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/cristopher1/JSONSerializerPlugins.git"
+    "url": "git+https://github.com/cristopher1/json-serializer-plugins.git"
   },
   "keywords": [
     "plugins",
@@ -41,9 +41,9 @@
   "author": "Cristopher Jiménez",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/cristopher1/JSONSerializerPlugins/issues"
+    "url": "https://github.com/cristopher1/json-serializer-plugins/issues"
   },
-  "homepage": "https://github.com/cristopher1/JSONSerializerPlugins#readme",
+  "homepage": "https://github.com/cristopher1/json-serializer-plugins#readme",
   "devDependencies": {
     "@babel/cli": "^7.22.15",
     "@babel/core": "^7.22.17",
