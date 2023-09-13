@@ -38,7 +38,7 @@
     "plugins",
     "JSONSerializer"
   ],
-  "author": "Cristopher Luis Jiménez Meza",
+  "author": "Cristopher Jiménez",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cristopher1/JSONSerializerPlugins/issues"
