@@ -25,7 +25,7 @@ const MJS_FILE = {
 
 const INPUT_FILE = 'src/index.js'
 
-// Resolve import * as plugin from './plugins'
+// to use babel-plugin-wildcard
 const RESOLVE_IMPORT_ALL = 'resolveImportAll'
 
 // Unminified transpiler files
