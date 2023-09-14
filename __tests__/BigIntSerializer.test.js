@@ -1,17 +1,19 @@
-import { createReplacer, createReviver, dataTypeKey, faker } from './helpers'
-import { serializers } from '../src'
+import { createReplacer, createReviver, faker } from './helpers'
+import BigSerializer from '../src/serializer/serializers/BigIntSerializer'
 
-const filePath = 'src/plugins/BigIntSerializerPlugin.js'
+const filePath = 'src/serializer/serializers/BigIntSerializer.js'
 
-const replacer = createReplacer(serializers)
-const reviver = createReviver(dataTypeKey, serializers)
+const serializer = { bigint: new BigSerializer() }
+
+const replacer = createReplacer(serializer)
+const reviver = createReviver(serializer)
 
 describe(`class BigIntSerializerPlugin (${filePath})`, () => {
   describe('JSON.stringify', () => {
     it('Should allow JSON.stringify to serialize a bigint', () => {
       // Arrange
       const input = faker.number.bigInt()
-      const expected = `{"${dataTypeKey}":"bigint","value":"${input.toString()}"}`
+      const expected = `{"__typeof__":"bigint","value":"${input.toString()}"}`
 
       // Act
       const result = JSON.stringify(input, replacer)

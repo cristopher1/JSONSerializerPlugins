@@ -1,17 +1,19 @@
-import { createReplacer, createReviver, dataTypeKey, faker } from './helpers'
-import { serializers } from '../src'
+import { createReplacer, createReviver, faker } from './helpers'
+import DataSerializer from '../src/serializer/serializers/DateSerializer'
 
-const filePath = 'src/plugins/DateSerializerPlugin.js'
+const filePath = 'src/serializer/serializers/DateSerializer.js'
 
-const replacer = createReplacer(serializers)
-const reviver = createReviver(dataTypeKey, serializers)
+const serializer = { date: new DataSerializer() }
+
+const replacer = createReplacer(serializer)
+const reviver = createReviver(serializer)
 
 describe(`class DateSerializerPlugin (${filePath})`, () => {
   describe('JSON.stringify', () => {
     it('Should allow JSON.stringify to serialize a date', () => {
       // Arrange
       const input = faker.date.birthdate()
-      const expected = `{"${dataTypeKey}":"date","value":"${input.toJSON()}"}`
+      const expected = `{"__typeof__":"date","value":"${input.toJSON()}"}`
 
       // Act
       const result = JSON.stringify(input, replacer)

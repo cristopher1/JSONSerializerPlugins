@@ -1,10 +1,12 @@
-import { createReplacer, createReviver, dataTypeKey, faker } from './helpers'
-import { serializers } from '../src'
+import { createReplacer, createReviver, faker } from './helpers'
+import FunctionSerializer from '../src/serializer/serializers/FunctionSerializer'
 
-const filePath = 'src/plugins/FunctionSerializerPlugin.js'
+const filePath = 'src/serializer/serializers/FunctionSerializer.js'
 
-const replacer = createReplacer(serializers)
-const reviver = createReviver(dataTypeKey, serializers)
+const serializer = { function: new FunctionSerializer() }
+
+const replacer = createReplacer(serializer)
+const reviver = createReviver(serializer)
 
 describe(`class FunctionSerializerPlugin (${filePath})`, () => {
   describe('JSON.stringify', () => {
@@ -13,7 +15,7 @@ describe(`class FunctionSerializerPlugin (${filePath})`, () => {
       const input = function sum(a, b) {
         return a + b
       }
-      const expected = `{"${dataTypeKey}":"function","value":"(function sum(a, b) {\\n        return a + b;\\n      })"}`
+      const expected = `{"__typeof__":"function","value":"(function sum(a, b) {\\n        return a + b;\\n      })"}`
 
       // Act
       const result = JSON.stringify(input, replacer)
@@ -24,7 +26,7 @@ describe(`class FunctionSerializerPlugin (${filePath})`, () => {
     it('Should allow JSON.stringify to serialize a arrow function', () => {
       // Arrange
       const input = (a, b, c) => a * b - c
-      const expected = `{"${dataTypeKey}":"function","value":"((a, b, c) => a * b - c)"}`
+      const expected = `{"__typeof__":"function","value":"((a, b, c) => a * b - c)"}`
 
       // Act
       const result = JSON.stringify(input, replacer)
