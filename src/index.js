@@ -12,8 +12,8 @@ export default {
       const serializer = new Serializer()
       const serializerType = serializer.serializerType
       if (serializerType !== 'function' || includeSerializerFunction) {
-        replacerBuilder.setSerializer(serializerType, serializer)
-        reviverBuilder.setSerializer(serializerType, serializer)
+        replacerBuilder.addSerializer(serializerType, serializer)
+        reviverBuilder.addSerializer(serializerType, serializer)
       }
     }
   },
