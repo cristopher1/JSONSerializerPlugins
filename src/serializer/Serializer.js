@@ -10,7 +10,7 @@ class Serializer {
     this.#serializerType = serializerType
   }
 
-  get serializerType() {
+  getSerializerType() {
     return this.#serializerType
   }
 }
