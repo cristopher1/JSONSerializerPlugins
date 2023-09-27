@@ -1,7 +1,7 @@
 import * as serializers from './serializer/serializers'
 
 export default {
-  install: (replacerBuilder, reviverBuilder, installOptions) => {
+  install: (serializerHandler, installOptions) => {
     const options = {
       includeSerializerFunction: false,
       ...installOptions,
@@ -12,8 +12,7 @@ export default {
       const serializer = new Serializer()
       const serializerType = serializer.serializerType
       if (serializerType !== 'function' || includeSerializerFunction) {
-        replacerBuilder.addSerializer(serializerType, serializer)
-        reviverBuilder.addSerializer(serializerType, serializer)
+        serializerHandler.addSerializer(serializer)
       }
     }
   },
