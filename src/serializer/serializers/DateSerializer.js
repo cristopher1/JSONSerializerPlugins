@@ -6,9 +6,7 @@ class DateSerializer extends Serializer {
   }
 
   serialize(value) {
-    const dataType = super.getSerializerType()
     const serializedData = {
-      __typeof__: dataType,
       value: value.toJSON(),
     }
     return serializedData
