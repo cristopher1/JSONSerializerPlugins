@@ -5,16 +5,23 @@ const fakerSeed = 125
 faker.seed(fakerSeed)
 
 export const createReplacer = (serializers) => {
-  const getSerializerType = (data) => {
-    const type = typeof data
-    return type === 'object' ? data.constructor.name.toLowerCase() : type
+  const getSerializerType = (unserializedData) => {
+    const type = typeof unserializedData
+    const serializerType =
+      type === 'object' ? unserializedData.constructor.name : type
+    return serializerType.toLowerCase()
   }
+
   return function replacer(key, value) {
     const unserializedData = this[key]
     const serializerType = getSerializerType(unserializedData)
     const serializer = serializers[serializerType]
     if (serializer) {
-      return serializer.serialize(unserializedData)
+      const serializedData = serializer.serialize(unserializedData)
+      return {
+        __typeof__: serializerType,
+        ...serializedData,
+      }
     }
     // Using serialized data by JSON.stringify algorithm
     return value
@@ -23,8 +30,7 @@ export const createReplacer = (serializers) => {
 
 export const createReviver = (serializers) => {
   return function reviver(key, value) {
-    const dataType = '__typeof__'
-    const serializerType = value[dataType]
+    const serializerType = value.__typeof__
     const serializer = serializers[serializerType]
     if (serializer) {
       return serializer.parse(value)
