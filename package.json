@@ -29,6 +29,7 @@
     "build": "npm run build:bundle && npm run build:tsc",
     "test": "jest --verbose",
     "commitlint": "npx commitlint --edit",
+    "lint-staged": "npx lint-staged",
     "quality-check": "npm run format && npm run lint && npm run test"
   },
   "repository": {
