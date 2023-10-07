@@ -28,7 +28,7 @@
     "prebuild": "npm run lint:build-stage && npm run format:build-stage:fix && npm run build:clean",
     "build": "npm run build:bundle && npm run build:tsc",
     "test": "jest --verbose",
-    "commitlint": "npx --commitlint --edit",
+    "commitlint": "npx commitlint --edit",
     "quality-check": "npm run format && npm run lint && npm run test"
   },
   "repository": {
