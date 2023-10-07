@@ -72,6 +72,7 @@
     "prettier-plugin-jsdoc": "^1.1.1",
     "rimraf": "^5.0.1",
     "rollup": "^3.29.1",
+    "rollup-plugin-dts": "^6.1.0",
     "typescript": "^5.2.2"
   },
   "dependencies": {
