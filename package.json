@@ -1,14 +1,20 @@
 {
   "name": "jsonserializerplugins",
   "version": "1.0.0",
-  "description": "Plugins for JSONSerializer",
-  "main": "dist/cjs/index.js",
+  "description": "Base Serializers for JSONSerializer",
+  "main": "./dist/cjs/index.js",
   "type": "commonjs",
+  "types": "./dist/types/index.d.cts",
   "exports": {
     ".": {
-      "import": "./dist/esm/index.mjs",
-      "require": "./dist/cjs/index.js",
-      "types": "./dist/types/index.d.ts"
+      "import": {
+        "types": "./dist/types/index.d.mts",
+        "default": "./dist/esm/index.mjs"
+      },
+      "require": {
+        "types": "./dist/types/index.d.cts",
+        "default": "./dist/cjs/index.cjs"
+      }
     }
   },
   "scripts": {
