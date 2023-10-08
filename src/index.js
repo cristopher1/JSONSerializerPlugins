@@ -16,15 +16,15 @@ export default {
    */
   install: (serializerHandler, installOptions) => {
     const options = {
-      includeSerializerFunction: false,
+      includeFunctionSerializer: false,
       ...installOptions,
     }
-    const { includeSerializerFunction } = options
+    const { includeFunctionSerializer } = options
     for (const key in serializers) {
       const Serializer = serializers[key]
       const serializer = new Serializer()
       const serializerType = serializer.getSerializerType()
-      if (serializerType !== 'function' || includeSerializerFunction) {
+      if (serializerType !== 'function' || includeFunctionSerializer) {
         serializerHandler.addSerializer(serializer)
       }
     }
