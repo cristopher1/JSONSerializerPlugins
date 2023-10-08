@@ -2,7 +2,7 @@ import Serializer from '../Serializer'
 
 class DateSerializer extends Serializer {
   constructor() {
-    super('date')
+    super('Date')
   }
 
   serialize(value) {
