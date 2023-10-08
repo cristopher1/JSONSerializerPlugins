@@ -1,6 +1,7 @@
 import Serializer from '../Serializer'
 
 class MapSerializer extends Serializer {
+  /** Serializer used to serialize and unserialize Maps. */
   constructor() {
     super('Map')
   }

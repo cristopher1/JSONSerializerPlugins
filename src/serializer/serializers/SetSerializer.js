@@ -1,6 +1,7 @@
 import Serializer from '../Serializer'
 
 class SetSerializer extends Serializer {
+  /** Serializer used to serialize and unserialize Sets. */
   constructor() {
     super('Set')
   }

@@ -1,6 +1,7 @@
 import Serializer from '../Serializer'
 
 class DateSerializer extends Serializer {
+  /** Serializer used to serialize and unserialize Dates. */
   constructor() {
     super('Date')
   }

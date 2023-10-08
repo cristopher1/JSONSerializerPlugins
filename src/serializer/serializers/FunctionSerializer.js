@@ -1,6 +1,7 @@
 import Serializer from '../Serializer'
 
 class FunctionSerializer extends Serializer {
+  /** Serializer used to serialize and unserialize functions. */
   constructor() {
     super('function')
   }

@@ -1,6 +1,7 @@
 import Serializer from '../Serializer'
 
 class BigIntSerializer extends Serializer {
+  /** Serializer used to serialize and unserialize BigInts. */
   constructor() {
     super('bigint')
   }
