@@ -9,7 +9,7 @@ export const createReplacer = (serializers) => {
     const type = typeof unserializedData
     const serializerType =
       type === 'object' ? unserializedData.constructor.name : type
-    return serializerType.toLowerCase()
+    return serializerType
   }
 
   return function replacer(key, value) {
