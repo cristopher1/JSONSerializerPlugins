@@ -5,9 +5,9 @@ class BigIntSerializer extends Serializer {
     super('bigint')
   }
 
-  serialize(value) {
+  serialize(unserializedData) {
     const serializedData = {
-      value: value.toString(),
+      value: unserializedData.toString(),
     }
     return serializedData
   }

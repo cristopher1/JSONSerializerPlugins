@@ -5,9 +5,9 @@ class FunctionSerializer extends Serializer {
     super('function')
   }
 
-  serialize(value) {
+  serialize(unserializedData) {
     const serializedData = {
-      value: `(${value.toString()})`,
+      value: `(${unserializedData.toString()})`,
     }
     return serializedData
   }

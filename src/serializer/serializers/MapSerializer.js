@@ -5,9 +5,9 @@ class MapSerializer extends Serializer {
     super('Map')
   }
 
-  serialize(value) {
+  serialize(unserializedData) {
     const serializedData = {
-      value: Array.from(value),
+      value: Array.from(unserializedData),
     }
     return serializedData
   }

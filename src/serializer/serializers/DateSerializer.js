@@ -5,9 +5,9 @@ class DateSerializer extends Serializer {
     super('Date')
   }
 
-  serialize(value) {
+  serialize(unserializedData) {
     const serializedData = {
-      value: value.toJSON(),
+      value: unserializedData.toJSON(),
     }
     return serializedData
   }
