@@ -10,7 +10,7 @@ export default {
     for (const key in serializers) {
       const Serializer = serializers[key]
       const serializer = new Serializer()
-      const serializerType = serializer.serializerType
+      const serializerType = serializer.getSerializerType()
       if (serializerType !== 'function' || includeSerializerFunction) {
         serializerHandler.addSerializer(serializer)
       }
