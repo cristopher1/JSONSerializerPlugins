@@ -2,7 +2,7 @@
   "name": "json-serializer-base-serializers",
   "version": "1.0.0",
   "description": "Base Serializers for JSONSerializer",
-  "main": "./dist/cjs/index.js",
+  "main": "./dist/cjs/index.cjs",
   "type": "commonjs",
   "types": "./dist/types/index.d.cts",
   "exports": {
