@@ -8,7 +8,7 @@ const serializer = { bigint: new BigSerializer() }
 const replacer = createReplacer(serializer)
 const reviver = createReviver(serializer)
 
-describe(`class BigIntSerializerPlugin (${filePath})`, () => {
+describe(`class BigIntSerializer (${filePath})`, () => {
   describe('JSON.stringify', () => {
     it('Should allow JSON.stringify to serialize a bigint', () => {
       // Arrange

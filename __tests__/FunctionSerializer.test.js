@@ -8,7 +8,7 @@ const serializer = { function: new FunctionSerializer() }
 const replacer = createReplacer(serializer)
 const reviver = createReviver(serializer)
 
-describe(`class FunctionSerializerPlugin (${filePath})`, () => {
+describe(`class FunctionSerializer (${filePath})`, () => {
   describe('JSON.stringify', () => {
     it('Should allow JSON.stringify to serialize a function', () => {
       // Arrange
