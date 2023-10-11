@@ -1,6 +1,6 @@
 import * as serializers from './serializer/serializers'
 
-export default {
+export const baseSerializersInstaller = {
   /**
    * This method is used when it is necessary to install Serializers using some
    * configuration.
