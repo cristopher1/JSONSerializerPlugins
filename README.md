@@ -15,6 +15,7 @@
 > A set of serializers used by the npm package @cljimenez/json-serializer-core.
 
 ### 🏠 [Homepage](https://github.com/cristopher1/json-serializer-plugins#readme)
+### [See @cljimenez/json-serializer-base-serializers in npm](https://www.npmjs.com/package/@cljimenez/json-serializer-base-serializers)
 
 ### [Index](#index)
 
