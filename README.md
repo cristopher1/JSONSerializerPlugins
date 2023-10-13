@@ -16,13 +16,25 @@
 
 ### 🏠 [Homepage](https://github.com/cristopher1/json-serializer-plugins#readme)
 
-## Install
+### [Index](#index)
+ * [Install](#install)
+ * [Prerequisites](#prerequisites)
+ * [What is a Serializer?](#what-is-a-serializer?)
+   * [About methods](#about-method)
+ * [How to use?](#how-to-use?)
+   * [1. Install base serializers using the installer object (baseSerializerInstaller)](#using-installer)
+   * [2. Add Serializers separately](#add-serializers-separately)
+ * [Author](#author)
+ * [Contributing](#contributing)
+ * [License](#license)
+
+## <a id="install"></a> Install
 
 ```sh
 npm install json-serializer-base-serializer
 ```
 
-## Prerequisites
+## <a id="prerequisites"></a> Prerequisites
 
 `json-serializer-base-serializers` is used for the `json-serializer-core` package. It is necessary to install both packages.
 
@@ -30,7 +42,7 @@ npm install json-serializer-base-serializer
 npm install json-serializer-core json-serializer-base-serializers
 ```
 
-## What is a Serializer?
+## <a id="what-is-a-serializer?"></a> What is a Serializer?
 
 A Serializer is an object that contains three methods:
 
@@ -46,7 +58,7 @@ The `json-serializer-base-serializers` includes five serializers:
 - **MapSerializer**: Serializes and unserializes `maps`.
 - **SetSerializer**: Serializes and unserializes `sets`.
 
-### About methods
+### <a id="about-method"></a> About methods
 
 **`getSerializerType(void)=>string`**: Returns a string that represents the type of Serializer.
 
@@ -190,9 +202,9 @@ const unserializedData = functionSerializer.parse(serializedData)
 console.log(unserializedData('string1', 'string2'))
 ```
 
-## How to use?
+## <a id="how-to-use?"></a> How to use?
 
-### 1. Install base serializers using the installer object (baseSerializerInstaller):
+### <a id="using-installer"></a> 1. Install base serializers using the installer object (baseSerializerInstaller):
 
 **Note**: The FunctionSerializer is not included by default in the installer, if you want include it, you must use the **installOptions** parameter in the **jsonSerializer.installSerializersAndRefreshJsonSerializer** method.
 
@@ -257,7 +269,7 @@ jsonSerializer.serialize(/*Replace by the unserialized data supports to the inst
 jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializer.serialize method*/)
 ```
 
-### 2. Add Serializers separately
+### <a id="add-serializers-separately"></a> 2. Add Serializers separately
 
 **Complete example for commonjs:**
 
@@ -319,17 +331,17 @@ jsonSerializer.serialize(/*Insert unserialized data supports to the installed Se
 jsonSerializer.parse(/*Insert serialized data serializes by jsonSerializer.serialize method*/)
 ```
 
-## Author
+## <a id="author"></a> Author
 
 👤 **Cristopher Jiménez**
 
 - Github: [@cristopher1](https://github.com/cristopher1)
 
-## 🤝 Contributing
+## <a id="contributing"></a> 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/cristopher1/json-serializer-base-serializers/issues).
 
-## 📝 License
+## <a id="license"></a> 📝 License
 
 Copyright © 2023 [Cristopher Jiménez](https://github.com/cristopher1).<br />
 This project is [MIT](https://github.com/cristopher1/json-serializer-plugins/blob/master/LICENSE) licensed.
