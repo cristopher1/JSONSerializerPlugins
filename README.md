@@ -30,72 +30,278 @@ npm install json-serializer-base-serializer
 npm install json-serializer-core json-serializer-base-serializers
 ```
 
-## Description
+## What is a Serializer?
 
-The `json-serializer-base-serializers` includes five serializers:
+A Serializer is an object that contains three methods:
 
-- **BigIntSerializer**: Serializes and unserializes `big integer`.
-- **DateSerializer**: Serializes and unserializes `dates`.
-- **FunctionSerializer**: Serializes and unserializes `functions`.
-- **MapSerializer**: Serializes and unserializes `maps`.
-- **SetSerializer**: Serializes and unserializes `sets`.
+- **getSerializerType(void)=>string**
+- **serialize(unserializedData: any)=>object**
+- **parse(serializedData: object)=>any**
 
-The FunctionSerializer is not included by default, if you want include that serializer, you must use the **installOptions** parameter in the **jsonSerializer.installSerializersAndRefreshJsonSerializer** method.
+ The `json-serializer-base-serializers` includes five serializers:
 
-```js
-const installOptions = { includeFunctionSerializer: true }
-jsonSerializer.installSerializersAndRefreshJsonSerializer(
-  baseSerializers,
-  installOptions,
-)
-```
+  - **BigIntSerializer**: Serializes and unserializes `big integer`.
+  - **DateSerializer**: Serializes and unserializes `dates`.
+  - **FunctionSerializer**: Serializes and unserializes `functions`.
+  - **MapSerializer**: Serializes and unserializes `maps`.
+  - **SetSerializer**: Serializes and unserializes `sets`.
+
+### About methods
+
+  **`getSerializerType(void)=>string`**: Returns a string that represents the type of Serializer.
+  
+  **Example for commonjs:**
+  ```js
+  const baseSerializers = require("json-serializer-base-serializers")
+  
+  const BigIntSerializer = baseSerializers.BigIntSerializer
+  const DateSerializer = baseSerializers.DateSerializer
+  const FunctionSerializer = baseSerializers.FunctionSerializer
+  const MapSerializer = baseSerializers.MapSerializer
+  const SetSerializer = baseSerializers.SetSerializer
+  
+  const bigIntSerializer = new BigIntSerializer()
+  const dateSerializer = new DateSerializer()
+  const functionSerializer = new FunctionSerializer()
+  const mapSerializer = new MapSerializer()
+  const setSerializer = new SetSerializer()
+  
+  // returns 'bigint'
+  bigIntSerializer.getSerializerType()
+  
+  // returns 'Date'
+  dateSerializer.getSerializerType()
+  
+  // returns 'function'
+  functionSerializer.getSerializerType()
+  
+  // returns 'Map'
+  mapSerializer.getSerializerType()
+  
+  // returns 'Set'
+  setSerializer.getSerializerType()
+  ```
+     
+  **Example for ES Modules:**
+  ```js
+  import { BigIntSerializer, DateSerializer, FunctionSerializer, MapSerializer, SetSerializer } from 'json-serializer-base-serializers'
+  
+  const bigIntSerializer = new BigIntSerializer()
+  const dateSerializer = new DateSerializer()
+  const functionSerializer = new FunctionSerializer()
+  const mapSerializer = new MapSerializer()
+  const setSerializer = new SetSerializer()
+  
+  // returns 'bigint'
+  bigIntSerializer.getSerializerType()
+  
+  // returns 'Date'
+  dateSerializer.getSerializerType()
+  
+  // returns 'function'
+  functionSerializer.getSerializerType()
+  
+  // returns 'Map'
+  mapSerializer.getSerializerType()
+  
+  // returns 'Set'
+  setSerializer.getSerializerType()
+  ```
+
+  **`serialize(unserializedData: any)=>object`**. Serializes data, returns an object using the format `{value: serializedData}`.
+  
+  **Example for commonjs**:
+  ```js
+  const baseSerializers = require("json-serializer-base-serializers")
+
+  const FunctionSerializer = baseSerializers.FunctionSerializer
+
+  const functionSerializer = new FunctionSerializer()
+
+  // returns: { value: '(() => {\n        "string"\n      })' }  
+  const serializedData = functionSerializer.serialize(() => {"string"})
+  ```
+  
+  **Example for ES Modules**:
+  ```js
+  import { FunctionSerializer } from "json-serializer-base-serializers"
+
+  const functionSerializer = new FunctionSerializer()
+
+  // returns: { value: '(() => {\n        "string"\n      })' }  
+  const serializedData = functionSerializer.serialize(() => {"string"})
+  ```
+
+  **`parse(serializedData: object)=>any`**. Unserializes data, returns the value formated by serialize method.
+  
+  **Example for commonjs**:
+  ```js
+  const baseSerializers = require("json-serializer-base-serializers")
+
+  const FunctionSerializer = baseSerializers.FunctionSerializer
+
+  const functionSerializer = new FunctionSerializer()
+
+  const serializedData = functionSerializer.serialize(
+    (arg1, arg2) => `${arg1} and ${arg2}`
+  )
+
+  // { value: '((arg1, arg2) => `${arg1} and ${arg2}`)' }
+  console.log(serializedData)
+
+  const unserializedData = functionSerializer.parse(serializedData)
+
+  // string1 and string2
+  console.log(unserializedData("string1", "string2"))
+  ```
+  
+  **Example for ES Modules**:
+  ```js
+  import { FunctionSerializer } from "json-serializer-base-serializers"
+
+  const functionSerializer = new FunctionSerializer()
+
+  const serializedData = functionSerializer.serialize(
+    (arg1, arg2) => `${arg1} and ${arg2}`
+  )
+
+  // { value: '((arg1, arg2) => `${arg1} and ${arg2}`)' }
+  console.log(serializedData)
+
+  const unserializedData = functionSerializer.parse(serializedData)
+
+  // string1 and string2
+  console.log(unserializedData("string1", "string2"))
+  ```
 
 ## How to use?
 
-**for commonjs:**
+### 1. Install base serializers using the installer object (baseSerializerInstaller):
+  **Note**: The FunctionSerializer is not included by default in the installer, if you want include it, you must use the **installOptions** parameter in the **jsonSerializer.installSerializersAndRefreshJsonSerializer** method.
+    
+  ```js
+  const installOptions = { includeFunctionSerializer: true }
+    jsonSerializer.installSerializersAndRefreshJsonSerializer(
+    baseSerializers,
+    installOptions,
+  )
+  ```
+  
+  **Complete example for commonjs:**
+  
+  ```js
+  // Import the packages.
+  const core = require('json-serializer-core')
+  const baseSerializers = require('json-serializer-base-serializers')
+  
+  // Obtain the installer object.
+  const installer = baseSerializers.baseSerializersInstaller
+  
+  // Obtain the JsonSerializer object.
+  const jsonSerializer = core.JsonSerializerFactory.createJsonSerializer()
+  
+  // Install the serializers without FunctionSerializer.
+  jsonSerializer.installSerializersAndRefreshJsonSerializer(installer)
+  
+  // If you want install the FunctionSerializer, you can use:
+  jsonSerializer.installSerializersAndRefreshJsonSerializer(installer, {
+    includeFunctionSerializer: true,
+  })
+  
+  jsonSerializer.serialize(/*Replace by the unserialized data supports to the installed Serializers*/)
+  
+  jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializer.serialize method*/)
+  ```
+  
+  **Complete example for ES Modules:**
+  
+  ```js
+  // Import the JsonSerializerFactory class.
+  import { JsonSerializerFactory } from 'json-serializer-core'
+  // Import the baseSerializerInstaller object.
+  import { baseSerializersInstaller } from 'json-serializer-base-serializers'
+  
+  // Obtain the JsonSerializer object.
+  const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
+  
+  // Install the serializers without FunctionSerializer.
+  jsonSerializer.installSerializersAndRefreshJsonSerializer(
+    baseSerializersInstaller,
+  )
+  
+  // If you want install the FunctionSerializer, you can use:
+  jsonSerializer.installSerializersAndRefreshJsonSerializer(
+    baseSerializersInstaller,
+    { includeFunctionSerializer: true },
+  )
+  
+  jsonSerializer.serialize(/*Replace by the unserialized data supports to the installed Serializers*/)
+  
+  jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializer.serialize method*/)
+  ```
 
-```js
-// to import the packages.
-const core = require('json-serializer-core')
-const baseSerializers = require('json-serializer-base-serializers')
+### 2. Add Serializers separately
 
-// to obtain the installer object.
-const installer = baseSerializers.baseSerializersInstaller
+  **Complete example for commonjs:**
+  
+  ```js
 
-// to obtain the JsonSerializer object.
-const jsonSerializer = core.JsonSerializerFactory.createJsonSerializer()
+  // Import the packages.
+  const core = require('json-serializer-core')
+  const baseSerializers = require('json-serializer-base-serializers')
 
-// to install the serializers without FunctionSerializer.
-jsonSerializer.installSerializersAndRefreshJsonSerializer(installer)
+  // Obtain the JsonSerializer object.
+  const jsonSerializer = core.JsonSerializerFactory.createJsonSerializer()
 
-// if you want install the FunctionSerializer, you can use:
-jsonSerializer.installSerializersAndRefreshJsonSerializer(installer, {
-  includeFunctionSerializer: true,
-})
-```
+  // Import Serializers to add.
+  const BigIntSerializer = baseSerializers.BigIntSerializer
+  const FunctionSerializer = baseSerializers.FunctionSerializer
+  const MapSerializer = baseSerializers.MapSerializer
 
-**for ES Modules:**
+  // Create the instances.
+  const bigIntSerializer = new BigIntSerializer()
+  const functionSerializer = new FunctionSerializer()
+  const mapSerializer = new MapSerializer()
+  
+  // Add Serializers.
+  jsonSerializer.addSerializerAndRefreshJsonSerializer(bigIntSerializer)
+  jsonSerializer.addSerializerAndRefreshJsonSerializer(functionSerializer)
+  jsonSerializer.addSerializerAndRefreshJsonSerializer(mapSerializer)
+  
+  jsonSerializer.serialize(/*Insert unserialized data supports to the installed Serializers*/)
+  
+  jsonSerializer.parse(/*Insert serialized data serializes by jsonSerializer.serialize method*/)
+  ```
 
-```js
-// to import the JsonSerializerFactory class.
-import { JsonSerializerFactory } from 'json-serializer-core'
-// to import the baseSerializerInstaller object.
-import { baseSerializersInstaller } from 'json-serializer-base-serializers'
+  **Complete example for ES Modules:**
+  
+  ```js
+  // Import the JsonSerializerFactory class.
+  import { JsonSerializerFactory } from "json-serializer-core"
+  // Import Serializers to add.
+  import {
+    BigIntSerializer,
+    FunctionSerializer,
+    MapSerializer,
+  } from "json-serializer-base-serializers"
 
-// to obtain the JsonSerializer object.
-const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
+  // Obtain the JsonSerializer object.
+  const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
 
-// to install the serializers without FunctionSerializer.
-jsonSerializer.installSerializersAndRefreshJsonSerializer(
-  baseSerializersInstaller,
-)
+  // Create the instances.
+  const bigIntSerializer = new BigIntSerializer()
+  const functionSerializer = new FunctionSerializer()
+  const mapSerializer = new MapSerializer()
 
-// if you want install the FunctionSerializer, you can use:
-jsonSerializer.installSerializersAndRefreshJsonSerializer(
-  baseSerializersInstaller,
-  { includeFunctionSerializer: true },
-)
-```
+  // Add Serializers.
+  jsonSerializer.addSerializerAndRefreshJsonSerializer(bigIntSerializer)
+  jsonSerializer.addSerializerAndRefreshJsonSerializer(functionSerializer)
+  jsonSerializer.addSerializerAndRefreshJsonSerializer(mapSerializer)
+
+  jsonSerializer.serialize(/*Insert unserialized data supports to the installed Serializers*/)
+  
+  jsonSerializer.parse(/*Insert serialized data serializes by jsonSerializer.serialize method*/)
+  ```
 
 ## Author
 
@@ -105,7 +311,7 @@ jsonSerializer.installSerializersAndRefreshJsonSerializer(
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/cristopher1/json-serializer-base-serializers/issues). You can also take a look at the [contributing guide](https://github.com/cristopher1/json-serializer-base-serializers/blob/master/CONTRIBUTING.md).
+Contributions, issues and feature requests are welcome!<br />Feel free to check [issues page](https://github.com/cristopher1/json-serializer-base-serializers/issues).
 
 ## 📝 License
 
