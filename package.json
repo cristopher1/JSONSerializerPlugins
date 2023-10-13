@@ -1,5 +1,5 @@
 {
-  "name": "json-serializer-base-serializers",
+  "name": "@cljimenez/json-serializer-base-serializers",
   "version": "1.0.0",
   "description": "A set of serializers used by the npm package json-serializer-core.",
   "main": "./dist/cjs/index.cjs",
@@ -11,6 +11,9 @@
       "require": "./dist/cjs/index.cjs"
     }
   },
+  "files": [
+    "./dist"
+  ],
   "scripts": {
     "init:husky": "husky install",
     "init:documentation": "npx readme-md-generator -y",
