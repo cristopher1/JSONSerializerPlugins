@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to json-serializer-base-serializers 👋</h1>
+<h1 align="center">Welcome to @cljimenez/json-serializer-base-serializers 👋</h1>
 <p>
   <img alt="Version" src="https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/cristopher1/json-serializer-plugins#readme" target="_blank">
@@ -12,7 +12,7 @@
   </a>
 </p>
 
-> A set of serializers used by the npm package json-serializer-core.
+> A set of serializers used by the npm package @cljimenez/json-serializer-core.
 
 ### 🏠 [Homepage](https://github.com/cristopher1/json-serializer-plugins#readme)
 
