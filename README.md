@@ -38,270 +38,286 @@ A Serializer is an object that contains three methods:
 - **serialize(unserializedData: any)=>object**
 - **parse(serializedData: object)=>any**
 
- The `json-serializer-base-serializers` includes five serializers:
+The `json-serializer-base-serializers` includes five serializers:
 
-  - **BigIntSerializer**: Serializes and unserializes `big integer`.
-  - **DateSerializer**: Serializes and unserializes `dates`.
-  - **FunctionSerializer**: Serializes and unserializes `functions`.
-  - **MapSerializer**: Serializes and unserializes `maps`.
-  - **SetSerializer**: Serializes and unserializes `sets`.
+- **BigIntSerializer**: Serializes and unserializes `big integer`.
+- **DateSerializer**: Serializes and unserializes `dates`.
+- **FunctionSerializer**: Serializes and unserializes `functions`.
+- **MapSerializer**: Serializes and unserializes `maps`.
+- **SetSerializer**: Serializes and unserializes `sets`.
 
 ### About methods
 
-  **`getSerializerType(void)=>string`**: Returns a string that represents the type of Serializer.
-  
-  **Example for commonjs:**
-  ```js
-  const baseSerializers = require("json-serializer-base-serializers")
-  
-  const BigIntSerializer = baseSerializers.BigIntSerializer
-  const DateSerializer = baseSerializers.DateSerializer
-  const FunctionSerializer = baseSerializers.FunctionSerializer
-  const MapSerializer = baseSerializers.MapSerializer
-  const SetSerializer = baseSerializers.SetSerializer
-  
-  const bigIntSerializer = new BigIntSerializer()
-  const dateSerializer = new DateSerializer()
-  const functionSerializer = new FunctionSerializer()
-  const mapSerializer = new MapSerializer()
-  const setSerializer = new SetSerializer()
-  
-  // returns 'bigint'
-  bigIntSerializer.getSerializerType()
-  
-  // returns 'Date'
-  dateSerializer.getSerializerType()
-  
-  // returns 'function'
-  functionSerializer.getSerializerType()
-  
-  // returns 'Map'
-  mapSerializer.getSerializerType()
-  
-  // returns 'Set'
-  setSerializer.getSerializerType()
-  ```
-     
-  **Example for ES Modules:**
-  ```js
-  import { BigIntSerializer, DateSerializer, FunctionSerializer, MapSerializer, SetSerializer } from 'json-serializer-base-serializers'
-  
-  const bigIntSerializer = new BigIntSerializer()
-  const dateSerializer = new DateSerializer()
-  const functionSerializer = new FunctionSerializer()
-  const mapSerializer = new MapSerializer()
-  const setSerializer = new SetSerializer()
-  
-  // returns 'bigint'
-  bigIntSerializer.getSerializerType()
-  
-  // returns 'Date'
-  dateSerializer.getSerializerType()
-  
-  // returns 'function'
-  functionSerializer.getSerializerType()
-  
-  // returns 'Map'
-  mapSerializer.getSerializerType()
-  
-  // returns 'Set'
-  setSerializer.getSerializerType()
-  ```
+**`getSerializerType(void)=>string`**: Returns a string that represents the type of Serializer.
 
-  **`serialize(unserializedData: any)=>object`**. Serializes data, returns an object using the format `{value: serializedData}`.
-  
-  **Example for commonjs**:
-  ```js
-  const baseSerializers = require("json-serializer-base-serializers")
+**Example for commonjs:**
 
-  const FunctionSerializer = baseSerializers.FunctionSerializer
+```js
+const baseSerializers = require('json-serializer-base-serializers')
 
-  const functionSerializer = new FunctionSerializer()
+const BigIntSerializer = baseSerializers.BigIntSerializer
+const DateSerializer = baseSerializers.DateSerializer
+const FunctionSerializer = baseSerializers.FunctionSerializer
+const MapSerializer = baseSerializers.MapSerializer
+const SetSerializer = baseSerializers.SetSerializer
 
-  // returns: { value: '(() => {\n        "string"\n      })' }  
-  const serializedData = functionSerializer.serialize(() => {"string"})
-  ```
-  
-  **Example for ES Modules**:
-  ```js
-  import { FunctionSerializer } from "json-serializer-base-serializers"
+const bigIntSerializer = new BigIntSerializer()
+const dateSerializer = new DateSerializer()
+const functionSerializer = new FunctionSerializer()
+const mapSerializer = new MapSerializer()
+const setSerializer = new SetSerializer()
 
-  const functionSerializer = new FunctionSerializer()
+// returns 'bigint'
+bigIntSerializer.getSerializerType()
 
-  // returns: { value: '(() => {\n        "string"\n      })' }  
-  const serializedData = functionSerializer.serialize(() => {"string"})
-  ```
+// returns 'Date'
+dateSerializer.getSerializerType()
 
-  **`parse(serializedData: object)=>any`**. Unserializes data, returns the value formated by serialize method.
-  
-  **Example for commonjs**:
-  ```js
-  const baseSerializers = require("json-serializer-base-serializers")
+// returns 'function'
+functionSerializer.getSerializerType()
 
-  const FunctionSerializer = baseSerializers.FunctionSerializer
+// returns 'Map'
+mapSerializer.getSerializerType()
 
-  const functionSerializer = new FunctionSerializer()
+// returns 'Set'
+setSerializer.getSerializerType()
+```
 
-  const serializedData = functionSerializer.serialize(
-    (arg1, arg2) => `${arg1} and ${arg2}`
-  )
+**Example for ES Modules:**
 
-  // { value: '((arg1, arg2) => `${arg1} and ${arg2}`)' }
-  console.log(serializedData)
+```js
+import {
+  BigIntSerializer,
+  DateSerializer,
+  FunctionSerializer,
+  MapSerializer,
+  SetSerializer,
+} from 'json-serializer-base-serializers'
 
-  const unserializedData = functionSerializer.parse(serializedData)
+const bigIntSerializer = new BigIntSerializer()
+const dateSerializer = new DateSerializer()
+const functionSerializer = new FunctionSerializer()
+const mapSerializer = new MapSerializer()
+const setSerializer = new SetSerializer()
 
-  // string1 and string2
-  console.log(unserializedData("string1", "string2"))
-  ```
-  
-  **Example for ES Modules**:
-  ```js
-  import { FunctionSerializer } from "json-serializer-base-serializers"
+// returns 'bigint'
+bigIntSerializer.getSerializerType()
 
-  const functionSerializer = new FunctionSerializer()
+// returns 'Date'
+dateSerializer.getSerializerType()
 
-  const serializedData = functionSerializer.serialize(
-    (arg1, arg2) => `${arg1} and ${arg2}`
-  )
+// returns 'function'
+functionSerializer.getSerializerType()
 
-  // { value: '((arg1, arg2) => `${arg1} and ${arg2}`)' }
-  console.log(serializedData)
+// returns 'Map'
+mapSerializer.getSerializerType()
 
-  const unserializedData = functionSerializer.parse(serializedData)
+// returns 'Set'
+setSerializer.getSerializerType()
+```
 
-  // string1 and string2
-  console.log(unserializedData("string1", "string2"))
-  ```
+**`serialize(unserializedData: any)=>object`**. Serializes data, returns an object using the format `{value: serializedData}`.
+
+**Example for commonjs**:
+
+```js
+const baseSerializers = require('json-serializer-base-serializers')
+
+const FunctionSerializer = baseSerializers.FunctionSerializer
+
+const functionSerializer = new FunctionSerializer()
+
+// returns: { value: '(() => {\n        "string"\n      })' }
+const serializedData = functionSerializer.serialize(() => {
+  'string'
+})
+```
+
+**Example for ES Modules**:
+
+```js
+import { FunctionSerializer } from 'json-serializer-base-serializers'
+
+const functionSerializer = new FunctionSerializer()
+
+// returns: { value: '(() => {\n        "string"\n      })' }
+const serializedData = functionSerializer.serialize(() => {
+  'string'
+})
+```
+
+**`parse(serializedData: object)=>any`**. Unserializes data, returns the value formated by serialize method.
+
+**Example for commonjs**:
+
+```js
+const baseSerializers = require('json-serializer-base-serializers')
+
+const FunctionSerializer = baseSerializers.FunctionSerializer
+
+const functionSerializer = new FunctionSerializer()
+
+const serializedData = functionSerializer.serialize(
+  (arg1, arg2) => `${arg1} and ${arg2}`,
+)
+
+// { value: '((arg1, arg2) => `${arg1} and ${arg2}`)' }
+console.log(serializedData)
+
+const unserializedData = functionSerializer.parse(serializedData)
+
+// string1 and string2
+console.log(unserializedData('string1', 'string2'))
+```
+
+**Example for ES Modules**:
+
+```js
+import { FunctionSerializer } from 'json-serializer-base-serializers'
+
+const functionSerializer = new FunctionSerializer()
+
+const serializedData = functionSerializer.serialize(
+  (arg1, arg2) => `${arg1} and ${arg2}`,
+)
+
+// { value: '((arg1, arg2) => `${arg1} and ${arg2}`)' }
+console.log(serializedData)
+
+const unserializedData = functionSerializer.parse(serializedData)
+
+// string1 and string2
+console.log(unserializedData('string1', 'string2'))
+```
 
 ## How to use?
 
 ### 1. Install base serializers using the installer object (baseSerializerInstaller):
-  **Note**: The FunctionSerializer is not included by default in the installer, if you want include it, you must use the **installOptions** parameter in the **jsonSerializer.installSerializersAndRefreshJsonSerializer** method.
-    
-  ```js
-  const installOptions = { includeFunctionSerializer: true }
-    jsonSerializer.installSerializersAndRefreshJsonSerializer(
-    baseSerializers,
-    installOptions,
-  )
-  ```
-  
-  **Complete example for commonjs:**
-  
-  ```js
-  // Import the packages.
-  const core = require('json-serializer-core')
-  const baseSerializers = require('json-serializer-base-serializers')
-  
-  // Obtain the installer object.
-  const installer = baseSerializers.baseSerializersInstaller
-  
-  // Obtain the JsonSerializer object.
-  const jsonSerializer = core.JsonSerializerFactory.createJsonSerializer()
-  
-  // Install the serializers without FunctionSerializer.
-  jsonSerializer.installSerializersAndRefreshJsonSerializer(installer)
-  
-  // If you want install the FunctionSerializer, you can use:
-  jsonSerializer.installSerializersAndRefreshJsonSerializer(installer, {
-    includeFunctionSerializer: true,
-  })
-  
-  jsonSerializer.serialize(/*Replace by the unserialized data supports to the installed Serializers*/)
-  
-  jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializer.serialize method*/)
-  ```
-  
-  **Complete example for ES Modules:**
-  
-  ```js
-  // Import the JsonSerializerFactory class.
-  import { JsonSerializerFactory } from 'json-serializer-core'
-  // Import the baseSerializerInstaller object.
-  import { baseSerializersInstaller } from 'json-serializer-base-serializers'
-  
-  // Obtain the JsonSerializer object.
-  const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
-  
-  // Install the serializers without FunctionSerializer.
-  jsonSerializer.installSerializersAndRefreshJsonSerializer(
-    baseSerializersInstaller,
-  )
-  
-  // If you want install the FunctionSerializer, you can use:
-  jsonSerializer.installSerializersAndRefreshJsonSerializer(
-    baseSerializersInstaller,
-    { includeFunctionSerializer: true },
-  )
-  
-  jsonSerializer.serialize(/*Replace by the unserialized data supports to the installed Serializers*/)
-  
-  jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializer.serialize method*/)
-  ```
+
+**Note**: The FunctionSerializer is not included by default in the installer, if you want include it, you must use the **installOptions** parameter in the **jsonSerializer.installSerializersAndRefreshJsonSerializer** method.
+
+```js
+const installOptions = { includeFunctionSerializer: true }
+jsonSerializer.installSerializersAndRefreshJsonSerializer(
+  baseSerializers,
+  installOptions,
+)
+```
+
+**Complete example for commonjs:**
+
+```js
+// Import the packages.
+const core = require('json-serializer-core')
+const baseSerializers = require('json-serializer-base-serializers')
+
+// Obtain the installer object.
+const installer = baseSerializers.baseSerializersInstaller
+
+// Obtain the JsonSerializer object.
+const jsonSerializer = core.JsonSerializerFactory.createJsonSerializer()
+
+// Install the serializers without FunctionSerializer.
+jsonSerializer.installSerializersAndRefreshJsonSerializer(installer)
+
+// If you want install the FunctionSerializer, you can use:
+jsonSerializer.installSerializersAndRefreshJsonSerializer(installer, {
+  includeFunctionSerializer: true,
+})
+
+jsonSerializer.serialize(/*Replace by the unserialized data supports to the installed Serializers*/)
+
+jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializer.serialize method*/)
+```
+
+**Complete example for ES Modules:**
+
+```js
+// Import the JsonSerializerFactory class.
+import { JsonSerializerFactory } from 'json-serializer-core'
+// Import the baseSerializerInstaller object.
+import { baseSerializersInstaller } from 'json-serializer-base-serializers'
+
+// Obtain the JsonSerializer object.
+const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
+
+// Install the serializers without FunctionSerializer.
+jsonSerializer.installSerializersAndRefreshJsonSerializer(
+  baseSerializersInstaller,
+)
+
+// If you want install the FunctionSerializer, you can use:
+jsonSerializer.installSerializersAndRefreshJsonSerializer(
+  baseSerializersInstaller,
+  { includeFunctionSerializer: true },
+)
+
+jsonSerializer.serialize(/*Replace by the unserialized data supports to the installed Serializers*/)
+
+jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializer.serialize method*/)
+```
 
 ### 2. Add Serializers separately
 
-  **Complete example for commonjs:**
-  
-  ```js
+**Complete example for commonjs:**
 
-  // Import the packages.
-  const core = require('json-serializer-core')
-  const baseSerializers = require('json-serializer-base-serializers')
+```js
+// Import the packages.
+const core = require('json-serializer-core')
+const baseSerializers = require('json-serializer-base-serializers')
 
-  // Obtain the JsonSerializer object.
-  const jsonSerializer = core.JsonSerializerFactory.createJsonSerializer()
+// Obtain the JsonSerializer object.
+const jsonSerializer = core.JsonSerializerFactory.createJsonSerializer()
 
-  // Import Serializers to add.
-  const BigIntSerializer = baseSerializers.BigIntSerializer
-  const FunctionSerializer = baseSerializers.FunctionSerializer
-  const MapSerializer = baseSerializers.MapSerializer
+// Import Serializers to add.
+const BigIntSerializer = baseSerializers.BigIntSerializer
+const FunctionSerializer = baseSerializers.FunctionSerializer
+const MapSerializer = baseSerializers.MapSerializer
 
-  // Create the instances.
-  const bigIntSerializer = new BigIntSerializer()
-  const functionSerializer = new FunctionSerializer()
-  const mapSerializer = new MapSerializer()
-  
-  // Add Serializers.
-  jsonSerializer.addSerializerAndRefreshJsonSerializer(bigIntSerializer)
-  jsonSerializer.addSerializerAndRefreshJsonSerializer(functionSerializer)
-  jsonSerializer.addSerializerAndRefreshJsonSerializer(mapSerializer)
-  
-  jsonSerializer.serialize(/*Insert unserialized data supports to the installed Serializers*/)
-  
-  jsonSerializer.parse(/*Insert serialized data serializes by jsonSerializer.serialize method*/)
-  ```
+// Create the instances.
+const bigIntSerializer = new BigIntSerializer()
+const functionSerializer = new FunctionSerializer()
+const mapSerializer = new MapSerializer()
 
-  **Complete example for ES Modules:**
-  
-  ```js
-  // Import the JsonSerializerFactory class.
-  import { JsonSerializerFactory } from "json-serializer-core"
-  // Import Serializers to add.
-  import {
-    BigIntSerializer,
-    FunctionSerializer,
-    MapSerializer,
-  } from "json-serializer-base-serializers"
+// Add Serializers.
+jsonSerializer.addSerializerAndRefreshJsonSerializer(bigIntSerializer)
+jsonSerializer.addSerializerAndRefreshJsonSerializer(functionSerializer)
+jsonSerializer.addSerializerAndRefreshJsonSerializer(mapSerializer)
 
-  // Obtain the JsonSerializer object.
-  const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
+jsonSerializer.serialize(/*Insert unserialized data supports to the installed Serializers*/)
 
-  // Create the instances.
-  const bigIntSerializer = new BigIntSerializer()
-  const functionSerializer = new FunctionSerializer()
-  const mapSerializer = new MapSerializer()
+jsonSerializer.parse(/*Insert serialized data serializes by jsonSerializer.serialize method*/)
+```
 
-  // Add Serializers.
-  jsonSerializer.addSerializerAndRefreshJsonSerializer(bigIntSerializer)
-  jsonSerializer.addSerializerAndRefreshJsonSerializer(functionSerializer)
-  jsonSerializer.addSerializerAndRefreshJsonSerializer(mapSerializer)
+**Complete example for ES Modules:**
 
-  jsonSerializer.serialize(/*Insert unserialized data supports to the installed Serializers*/)
-  
-  jsonSerializer.parse(/*Insert serialized data serializes by jsonSerializer.serialize method*/)
-  ```
+```js
+// Import the JsonSerializerFactory class.
+import { JsonSerializerFactory } from 'json-serializer-core'
+// Import Serializers to add.
+import {
+  BigIntSerializer,
+  FunctionSerializer,
+  MapSerializer,
+} from 'json-serializer-base-serializers'
+
+// Obtain the JsonSerializer object.
+const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
+
+// Create the instances.
+const bigIntSerializer = new BigIntSerializer()
+const functionSerializer = new FunctionSerializer()
+const mapSerializer = new MapSerializer()
+
+// Add Serializers.
+jsonSerializer.addSerializerAndRefreshJsonSerializer(bigIntSerializer)
+jsonSerializer.addSerializerAndRefreshJsonSerializer(functionSerializer)
+jsonSerializer.addSerializerAndRefreshJsonSerializer(mapSerializer)
+
+jsonSerializer.serialize(/*Insert unserialized data supports to the installed Serializers*/)
+
+jsonSerializer.parse(/*Insert serialized data serializes by jsonSerializer.serialize method*/)
+```
 
 ## Author
 
