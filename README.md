@@ -17,16 +17,17 @@
 ### 🏠 [Homepage](https://github.com/cristopher1/json-serializer-plugins#readme)
 
 ### [Index](#index)
- * [Install](#install)
- * [Prerequisites](#prerequisites)
- * [What is a Serializer?](#what-is-a-serializer?)
-   * [About methods](#about-method)
- * [How to use?](#how-to-use?)
-   * [1. Install base serializers using the installer object (baseSerializerInstaller)](#using-installer)
-   * [2. Add Serializers separately](#add-serializers-separately)
- * [Author](#author)
- * [Contributing](#contributing)
- * [License](#license)
+
+- [Install](#install)
+- [Prerequisites](#prerequisites)
+- [What is a Serializer?](#what-is-a-serializer?)
+  - [About methods](#about-method)
+- [How to use?](#how-to-use?)
+  - [1. Install base serializers using the installer object (baseSerializerInstaller)](#using-installer)
+  - [2. Add Serializers separately](#add-serializers-separately)
+- [Author](#author)
+- [Contributing](#contributing)
+- [License](#license)
 
 ## <a id="install"></a> Install
 
