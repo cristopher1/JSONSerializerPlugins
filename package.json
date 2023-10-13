@@ -1,7 +1,7 @@
 {
   "name": "json-serializer-base-serializers",
   "version": "1.0.0",
-  "description": "Base Serializers for JSONSerializer",
+  "description": "A set of serializers used by the npm package json-serializer-core.",
   "main": "./dist/cjs/index.cjs",
   "type": "commonjs",
   "types": "./dist/types/index.d.ts",
