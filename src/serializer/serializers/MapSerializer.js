@@ -2,15 +2,17 @@ import Serializer from '../Serializer'
 
 /* eslint-disable no-eval */
 class MapSerializer extends Serializer {
+  #Map
+
   /** Serializer used to serialize and unserialize Maps. */
   constructor() {
     super('Map')
     try {
       // Map constructor used by the client.
-      this.Map = eval(`new Map().constructor`)
+      this.#Map = eval(`new Map().constructor`)
     } catch (err) {
       // When the environment does not support the Map constructor, it is used a polyfill in the transpiled code.
-      this.Map = new Map().constructor
+      this.#Map = new Map().constructor
     }
   }
 
@@ -23,7 +25,7 @@ class MapSerializer extends Serializer {
 
   parse(serializedData) {
     const value = serializedData.value
-    const parsedData = new this.Map(value)
+    const parsedData = new this.#Map(value)
     return parsedData
   }
 }
