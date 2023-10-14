@@ -34,7 +34,7 @@
 ## <a id="install"></a> Install
 
 ```sh
-npm install @cljimenez/json-serializer-base-serializer
+npm install @cljimenez/json-serializer-base-serializers
 ```
 
 ## <a id="prerequisites"></a> Prerequisites
@@ -53,7 +53,7 @@ A Serializer is an object that contains three methods:
 - **serialize(unserializedData: any)=>object**
 - **parse(serializedData: object)=>any**
 
-The `json-serializer-base-serializers` includes five serializers:
+The `@cljimenez/json-serializer-base-serializers` includes five serializers:
 
 - **BigIntSerializer**: Serializes and unserializes `big integer`.
 - **DateSerializer**: Serializes and unserializes `dates`.
