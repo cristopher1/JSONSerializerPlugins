@@ -15,6 +15,7 @@
 > A set of serializers used by the npm package @cljimenez/json-serializer-core.
 
 ### 🏠 [Homepage](https://github.com/cristopher1/json-serializer-plugins#readme)
+
 ### [See @cljimenez/json-serializer-base-serializers in npm](https://www.npmjs.com/package/@cljimenez/json-serializer-base-serializers)
 
 ### [Index](#index)
@@ -38,10 +39,10 @@ npm install json-serializer-base-serializer
 
 ## <a id="prerequisites"></a> Prerequisites
 
-`json-serializer-base-serializers` is used for the `json-serializer-core` package. It is necessary to install both packages.
+`@cljimenez/json-serializer-base-serializers` is used for the `@cljimenez/json-serializer-core` package. It is necessary to install both packages.
 
 ```script
-npm install json-serializer-core json-serializer-base-serializers
+npm install @cljimenez/json-serializer-core @cljimenez/json-serializer-base-serializers
 ```
 
 ## <a id="what-is-a-serializer?"></a> What is a Serializer?
@@ -67,7 +68,7 @@ The `json-serializer-base-serializers` includes five serializers:
 **Example for commonjs:**
 
 ```js
-const baseSerializers = require('json-serializer-base-serializers')
+const baseSerializers = require('@cljimenez/json-serializer-base-serializers')
 
 const BigIntSerializer = baseSerializers.BigIntSerializer
 const DateSerializer = baseSerializers.DateSerializer
@@ -106,7 +107,7 @@ import {
   FunctionSerializer,
   MapSerializer,
   SetSerializer,
-} from 'json-serializer-base-serializers'
+} from '@cljimenez/json-serializer-base-serializers'
 
 const bigIntSerializer = new BigIntSerializer()
 const dateSerializer = new DateSerializer()
@@ -135,7 +136,7 @@ setSerializer.getSerializerType()
 **Example for commonjs**:
 
 ```js
-const baseSerializers = require('json-serializer-base-serializers')
+const baseSerializers = require('@cljimenez/json-serializer-base-serializers')
 
 const FunctionSerializer = baseSerializers.FunctionSerializer
 
@@ -150,7 +151,7 @@ const serializedData = functionSerializer.serialize(() => {
 **Example for ES Modules**:
 
 ```js
-import { FunctionSerializer } from 'json-serializer-base-serializers'
+import { FunctionSerializer } from '@cljimenez/json-serializer-base-serializers'
 
 const functionSerializer = new FunctionSerializer()
 
@@ -165,7 +166,7 @@ const serializedData = functionSerializer.serialize(() => {
 **Example for commonjs**:
 
 ```js
-const baseSerializers = require('json-serializer-base-serializers')
+const baseSerializers = require('@cljimenez/json-serializer-base-serializers')
 
 const FunctionSerializer = baseSerializers.FunctionSerializer
 
@@ -187,7 +188,7 @@ console.log(unserializedData('string1', 'string2'))
 **Example for ES Modules**:
 
 ```js
-import { FunctionSerializer } from 'json-serializer-base-serializers'
+import { FunctionSerializer } from '@cljimenez/json-serializer-base-serializers'
 
 const functionSerializer = new FunctionSerializer()
 
@@ -222,8 +223,8 @@ jsonSerializer.installSerializersAndRefreshJsonSerializer(
 
 ```js
 // Import the packages.
-const core = require('json-serializer-core')
-const baseSerializers = require('json-serializer-base-serializers')
+const core = require('@cljimenez/json-serializer-core')
+const baseSerializers = require('@cljimenez/json-serializer-base-serializers')
 
 // Obtain the installer object.
 const installer = baseSerializers.baseSerializersInstaller
@@ -248,9 +249,9 @@ jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializ
 
 ```js
 // Import the JsonSerializerFactory class.
-import { JsonSerializerFactory } from 'json-serializer-core'
+import { JsonSerializerFactory } from '@cljimenez/json-serializer-core'
 // Import the baseSerializerInstaller object.
-import { baseSerializersInstaller } from 'json-serializer-base-serializers'
+import { baseSerializersInstaller } from '@cljimenez/json-serializer-base-serializers'
 
 // Obtain the JsonSerializer object.
 const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
@@ -277,8 +278,8 @@ jsonSerializer.parse(/*Replace by the serialized data serializes by jsonSerializ
 
 ```js
 // Import the packages.
-const core = require('json-serializer-core')
-const baseSerializers = require('json-serializer-base-serializers')
+const core = require('@cljimenez/json-serializer-core')
+const baseSerializers = require('@cljimenez/json-serializer-base-serializers')
 
 // Obtain the JsonSerializer object.
 const jsonSerializer = core.JsonSerializerFactory.createJsonSerializer()
@@ -307,13 +308,13 @@ jsonSerializer.parse(/*Insert serialized data serializes by jsonSerializer.seria
 
 ```js
 // Import the JsonSerializerFactory class.
-import { JsonSerializerFactory } from 'json-serializer-core'
+import { JsonSerializerFactory } from '@cljimenez/json-serializer-core'
 // Import Serializers to add.
 import {
   BigIntSerializer,
   FunctionSerializer,
   MapSerializer,
-} from 'json-serializer-base-serializers'
+} from '@cljimenez/json-serializer-base-serializers'
 
 // Obtain the JsonSerializer object.
 const jsonSerializer = JsonSerializerFactory.createJsonSerializer()
