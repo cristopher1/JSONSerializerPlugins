@@ -34,7 +34,7 @@
 ## <a id="install"></a> Install
 
 ```sh
-npm install json-serializer-base-serializer
+npm install @cljimenez/json-serializer-base-serializer
 ```
 
 ## <a id="prerequisites"></a> Prerequisites
