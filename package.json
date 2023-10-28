@@ -1,12 +1,13 @@
 {
   "name": "@cljimenez/json-serializer-base-serializers",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A set of serializers used by the npm package @cljimenez/json-serializer-core",
   "main": "./dist/cjs/index.cjs",
   "type": "commonjs",
   "types": "./dist/types/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/types/index.d.ts",
       "import": "./dist/esm/index.mjs",
       "require": "./dist/cjs/index.cjs"
     }

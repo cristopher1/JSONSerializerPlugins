@@ -1,6 +1,6 @@
 <h1 align="center">Welcome to @cljimenez/json-serializer-base-serializers 👋</h1>
 <p>
-  <img alt="Version" src="https://img.shields.io/badge/version-1.0.1-blue.svg?cacheSeconds=2592000" />
+  <img alt="Version" src="https://img.shields.io/badge/version-1.0.2-blue.svg?cacheSeconds=2592000" />
   <a href="https://github.com/cristopher1/json-serializer-plugins#readme" target="_blank">
     <img alt="Documentation" src="https://img.shields.io/badge/documentation-yes-brightgreen.svg" />
   </a>
@@ -39,7 +39,7 @@ npm install @cljimenez/json-serializer-base-serializers
 
 ## <a id="prerequisites"></a> Prerequisites
 
-`@cljimenez/json-serializer-base-serializers` is used for the `@cljimenez/json-serializer-core` package. It is necessary to install both packages.
+If you want to use `@cljimenez/json-serializer-base-serializers` with `@cljimenez/json-serializer-core`, you must install both packages.
 
 ```script
 npm install @cljimenez/json-serializer-core @cljimenez/json-serializer-base-serializers
